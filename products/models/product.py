@@ -16,7 +16,7 @@ class Product(models.Model):
     price = models.FloatField(validators=[non_negative_validator])
     description = models.TextField(blank=True)
     # models.CASCADE - if category is deleted, all products in this category will be deleted
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, null=True, blank=True)
     # models.SET_NULL - if category is deleted, all products in this category will be set to NULL
     # models.RESTRICT - don't allow to delete category if there are products in this category
     # models.DO_NOTHING - don't do anything if category is deleted
